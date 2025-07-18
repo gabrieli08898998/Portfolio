@@ -7,11 +7,11 @@
 
 body {
   margin: 0;
-  padding: 0 16px 20px; /* ajuste no padding lateral */
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   background: linear-gradient(90deg, #f5f7fa, #665db8);
-  color: #111;
+  color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -19,6 +19,7 @@ body {
   opacity: 0;
   transform: translateY(15px);
   animation: fadeSlideIn 0.8s ease forwards;
+  padding: 20px 16px;
   line-height: 1.5;
 }
 
@@ -28,14 +29,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Imagens não estouram o layout */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 20px;
 }
 
 /* CONTAINER GERAL */
@@ -68,7 +61,7 @@ main {
   z-index: 999;
   user-select: none;
   transition: box-shadow 0.3s ease;
-  color: #111;
+  color: #fff;
 }
 
 .navbar:hover {
@@ -125,7 +118,6 @@ header p {
 /* SECTIONS */
 section {
   margin-bottom: 56px;
-  padding: 0 12px;
 }
 
 section h2 {
@@ -195,6 +187,14 @@ figure:hover {
   user-select: none;
 }
 
+figcaption {
+  text-align: center;
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #111;
+}
+
 /* HABILIDADES */
 .habilidades-lista {
   display: flex;
@@ -236,10 +236,9 @@ figcaption {
   color: #222;
   font-weight: 600;
 }
-
 /* FOOTER liquid glass */
 footer.liquid-glass {
-  background: rgba(255, 255, 255, 0.979);
+  background: rgba(255, 253, 253, 0.979);
   backdrop-filter: saturate(180%) blur(30px);
   -webkit-backdrop-filter: saturate(180%) blur(30px);
   border-radius: 40px;
@@ -253,10 +252,11 @@ footer.liquid-glass {
   user-select: none;
 }
 
-footer .footer-wrapper {
+.footer-wrapper {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  border-radius: 40px;
 }
 
 footer h3 {
@@ -268,36 +268,60 @@ footer h3 {
 
 .links {
   display: flex;
-  flex-direction: column;
   gap: 20px;
-  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
   color: #111;
   font-size: 1.15rem;
   text-decoration: none;
-  padding: 12px 28px;
+  padding: 12px;
   border-radius: 50px;
   background: rgba(29, 29, 31, 0.06);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  user-select: text;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+  white-space: nowrap;
+  position: relative;
 }
 
-.link:hover {
-  background: rgba(29, 29, 31, 0.12);
-  transform: translateY(-3px);
-  cursor: pointer;
-}
 
 .link img {
   width: 24px;
   height: 24px;
-  filter: none;
-  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+.link .label {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  color: #111;
+}
+
+/* Quando passa o mouse */
+.link:hover {
+  width: 140px;
+  background: rgba(29, 29, 31, 0.12);
+}
+
+.link:hover img {
+  transform: scale(1.1);
+}
+
+.link:hover .label {
+  opacity: 1;
+  max-width: 100px;
+  margin-left: 8px;
 }
 
 footer .copy {
@@ -308,7 +332,8 @@ footer .copy {
   user-select: none;
 }
 
-/* RESPONSIVO BASE */
+
+/* RESPONSIVO */
 @media (max-width: 768px) {
   main {
     padding: 30px 16px 60px;
@@ -349,48 +374,5 @@ footer .copy {
   .habilidades-img {
     max-width: 100%;
     border-radius: 40px;
-  }
-}
-
-/* RESPONSIVIDADE MASTER PARA CELULARES PEQUENOS */
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 2rem;
-  }
-
-  header p {
-    font-size: 0.9rem;
-  }
-
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .galeria-projetos {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .habilidades-lista {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .link {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px 20px;
-  }
-
-  .link img {
-    margin-bottom: 8px;
-  }
-
-  .footer-wrapper {
-    padding: 0 10px;
   }
 }

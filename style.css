@@ -1,3 +1,4 @@
+
 /* ======== RESET BASIQUINHO ======== */
 *,
 *::before,
@@ -297,6 +298,7 @@ footer h3 {
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
+  
 }
 
 .link .label {
@@ -306,22 +308,35 @@ footer h3 {
   transition: all 0.3s ease;
   font-size: 0.95rem;
   color: #111;
+
 }
 
 /* Quando passa o mouse */
 .link:hover {
   width: 140px;
   background: rgba(29, 29, 31, 0.12);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
 }
 
 .link:hover img {
   transform: scale(1.1);
+  transition: transform 0.3s ease;
+  
+
 }
 
 .link:hover .label {
   opacity: 1;
   max-width: 100px;
   margin-left: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: #000000;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 footer .copy {
@@ -330,6 +345,7 @@ footer .copy {
   color: #666;
   font-weight: 400;
   user-select: none;
+  transition: color 0.3s ease;
 }
 
 
@@ -354,8 +370,15 @@ footer .copy {
     margin-bottom: 24px;
   }
 
+  @media (max-width: 768px) {
   .navbar ul {
     gap: 20px;
+    flex-wrap: wrap;
+  }
+}
+  .navbar a {
+    font-size: 0.95rem;
+    padding: 6px 12px;
   }
 
   .navbar a {
@@ -376,3 +399,20 @@ footer .copy {
     border-radius: 40px;
   }
 }
+/* Scroll Reveal estilo Apple flutuando */
+.invisible {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.elevate {
+  opacity: 1;
+  transform: translateY(0);
+} 
+html {
+  scroll-behavior: smooth;
+}
+
+

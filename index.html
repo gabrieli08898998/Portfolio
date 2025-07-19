@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,18 +10,22 @@
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  
   />
+
 </head>
 <body>
   <nav class="navbar">
-    <ul>
+    <ul>   
+      <li><a href="#home">Início</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#projetos">Projetos</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
       <li><a href="#contato">Contato</a></li>
+  
     </ul>
   </nav>
-
+<section class="home"  id="home"></section>
   <main>
     <header>
       <h1>Portfólio</h1>
@@ -107,5 +112,31 @@
 </footer>
 
   </main>
+ <script>
+  // Ativa scroll suave pelo CSS, não pelo JS
+  // Removido: document.documentElement.style.scrollBehavior
+
+  // Função segura para animar os elementos só uma vez
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('elevate');
+        observer.unobserve(entry.target); // para de observar depois de animar
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  // Seleciona elementos que devem ser animados (mas exclui navbar e coisas fixas)
+  const animatedItems = document.querySelectorAll('section, header, footer, figure, .habilidades-lista li');
+
+  animatedItems.forEach(item => {
+    item.classList.add('invisible');
+    observer.observe(item);
+  });
+</script>
+
+
 </body>
 </html>

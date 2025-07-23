@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,22 +9,26 @@
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  
   />
-
+  
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
-<body>
+<body>    
+  <section class="inicio" id="home"></section>
   <nav class="navbar">
-    <ul>   
+    <ul>
       <li><a href="#home">Início</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#projetos">Projetos</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
       <li><a href="#contato">Contato</a></li>
-  
     </ul>
   </nav>
-<section class="home"  id="home"></section>
+
   <main>
     <header>
       <h1>Portfólio</h1>
@@ -47,15 +50,15 @@
         Estou sempre em busca de aprender mais e aprimorar minhas habilidades. Este portfólio é uma coleção dos meus projetos e conquistas até agora.
       </p>
       <p>
-        Abaixo estão alguns dos projetos desenvolvidos por mim apenas por hobbie.
+        Conheça abaixo estão alguns dos projetos desenvolvidos por mim, onde aplico meus conhecimentos em HTML e CSS para criar experiências únicas e funcionais.
       </p>
     </section>
 
-    <section class="projetos" id="projetos">
+    <section class="projetos" id="projetos">  
       <h2>Projetos</h2>
       <div class="galeria-projetos">
         <figure>
-          <a href="https://gabrieli08898998.github.io/STAI-CONFORT-QUALIDADE-E-ESTILO/" target="_blank" rel="noopener noreferrer">
+          <a href="//gabrieli08898998.github.io/STAY-CONFORT-/" target="_blank" rel="noopener noreferrer">
             <img src="stai-confort.jpg" alt="Projeto STAI-CONFORT" class="projeto-img" />
           </a>
           <figcaption>STAI CONFORT</figcaption>
@@ -94,49 +97,82 @@
         </li>
       </ul>
     </section>
-<footer class="liquid-glass" id="contato">
-  <div class="footer-wrapper">
-    <h3>Contatos</h3>
-    <div class="links">
-      <a href="mailto:gabrielsousanascimento810@gmail.com" class="link">
-        <img src="https://img.icons8.com/ios-filled/50/111111/new-post.png" alt="Email" />
-        <span class="label">Email</span>
-      </a>
-      <a href="https://instagram.com/gbzin_vk7" target="_blank" rel="noopener noreferrer" class="link">
-        <img src="https://img.icons8.com/ios-filled/50/111111/instagram-new.png" alt="Instagram" />
-        <span class="label">Instagram</span>
-      </a>
-    </div>
-    <p class="copy">&copy; 2025 João Gabriel. Todos os direitos reservados.</p>
-  </div>
-</footer>
 
+    <footer class="liquid-glass" id="contato">
+      <div class="footer-wrapper">
+        <h3>Fale comigo!</h3>
+        <div class="links">
+          <a href="mailto:gabrielsousanascimento810@gmail.com" class="link">
+            <img src="https://img.icons8.com/ios-filled/50/111111/new-post.png" alt="Email" />
+            <span class="label">Email</span>
+          </a>
+          <a href="https://instagram.com/gbzin_vk7" target="_blank" rel="noopener noreferrer" class="link">
+            <img src="https://img.icons8.com/ios-filled/50/111111/instagram-new.png" alt="Instagram" />
+            <span class="label">Instagram</span>
+          </a>
+        </div>
+        <p class="copy">&copy; 2025 João Gabriel. Todos os direitos reservados.</p>
+      </div>
+    </footer>
   </main>
- <script>
-  // Ativa scroll suave pelo CSS, não pelo JS
-  // Removido: document.documentElement.style.scrollBehavior
 
-  // Função segura para animar os elementos só uma vez
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('elevate');
-        observer.unobserve(entry.target); // para de observar depois de animar
-      }
+  <!-- Script: Animação de rolagem + scroll suave ajustado -->
+  <script>
+    // Animação com IntersectionObserver
+    let lastScrollY = window.scrollY;
+    const elements = document.querySelectorAll("section, header");
+
+    elements.forEach((el) => {
+      el.classList.add("invisible");
     });
-  }, {
-    threshold: 0.15
-  });
 
-  // Seleciona elementos que devem ser animados (mas exclui navbar e coisas fixas)
-  const animatedItems = document.querySelectorAll('section, header, footer, figure, .habilidades-lista li');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const goingDown = window.scrollY > lastScrollY;
 
-  animatedItems.forEach(item => {
-    item.classList.add('invisible');
-    observer.observe(item);
-  });
-</script>
+          if (entry.isIntersecting) {
+            entry.target.classList.add("elevate");
 
+            if (goingDown) {
+              entry.target.style.transform = "translateY(20px)";
+            } else {
+              entry.target.style.transform = "translateY(-20px)";
+            }
 
+            requestAnimationFrame(() => {
+              entry.target.style.transform = "translateY(0)";
+            });
+          } else {
+            entry.target.classList.remove("elevate");
+            entry.target.classList.add("invisible");
+          }
+        });
+
+        lastScrollY = window.scrollY;
+      },
+      { threshold: 0.1 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    // Scroll suave ajustado com offset da navbar (caso seja fixa)
+    const headerOffset = 80; // Altere conforme altura da navbar
+    document.querySelectorAll('.navbar a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const elementPosition = target.offsetTop;
+          const offsetPosition = elementPosition - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

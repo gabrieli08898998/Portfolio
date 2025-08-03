@@ -2,17 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <!-- meta viewport ajustado para responsividade correta -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfólio</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/x-icon" href="https://imgs.search.brave.com/w4Eni3t9OCw2Hv6cMxqJEnZYHiwF25aCm56-9uABg2Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzE0LzQ0LzU2LzY3/LzM2MF9GXzE0NDQ1/NjY3MzdfQTlCd29y/R3VzeTBYMW8yQjdF/UDZFcFdOcXJZZkhp/NTUuanBn">
-  
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-  
+  <link rel="icon" type="image/x-icon" href="https://imgs.search.brave.com/w4Eni3t9OCw2Hv6cMxqJEnZYHiwF25aCm56-9uABg2Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzE0LzQ0LzU2LzY3/LzM2MF9GXzE0NDQ1/NjY3MzdfQTlCd29y/R3VzeTBYMW8yQjdF/UDZFcFdOcXJZZkhp/NTUuanBn">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     html {
       scroll-behavior: smooth;
@@ -118,9 +114,8 @@
     </footer>
   </main>
 
-  <!-- Script: Animação de rolagem + scroll suave ajustado -->
   <script>
-    // Animação com IntersectionObserver
+    // Seu código de animação e scroll suave aqui — mantido do jeito que estava
     let lastScrollY = window.scrollY;
     const elements = document.querySelectorAll("section, header");
 
@@ -158,8 +153,7 @@
 
     elements.forEach((el) => observer.observe(el));
 
-    // Scroll suave ajustado com offset da navbar (caso seja fixa)
-    const headerOffset = 80; // Altere conforme altura da navbar
+    const headerOffset = 80;
     document.querySelectorAll('.navbar a[href^="#"]').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -178,5 +172,3 @@
   </script>
 </body>
 </html>
-
-

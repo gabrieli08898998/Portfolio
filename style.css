@@ -1,5 +1,4 @@
-
-/* ======== RESET BASIQUINHO ======== */
+/* RESET BASIQUINHO */
 *,
 *::before,
 *::after {
@@ -8,11 +7,11 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 20px 16px;
   font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   background: linear-gradient(90deg, #f5f7fa, #665db8);
-  color: #ffffff;
+  color: #111;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -20,7 +19,6 @@ body {
   opacity: 0;
   transform: translateY(15px);
   animation: fadeSlideIn 0.8s ease forwards;
-  padding: 20px 16px;
   line-height: 1.5;
 }
 
@@ -44,7 +42,7 @@ main {
     0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* NAVBAR estilo Dynamic Island Apple */
+/* NAVBAR */
 .navbar {
   position: sticky;
   top: 20px;
@@ -62,7 +60,7 @@ main {
   z-index: 999;
   user-select: none;
   transition: box-shadow 0.3s ease;
-  color: #fff;
+  color: #111;
 }
 
 .navbar:hover {
@@ -76,6 +74,8 @@ main {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap; /* permite quebrar linha no celular */
+  justify-content: center; /* centraliza no celular */
 }
 
 .navbar a {
@@ -119,6 +119,7 @@ header p {
 /* SECTIONS */
 section {
   margin-bottom: 56px;
+  padding: 0 20px;
 }
 
 section h2 {
@@ -237,6 +238,7 @@ figcaption {
   color: #222;
   font-weight: 600;
 }
+
 /* FOOTER liquid glass */
 footer.liquid-glass {
   background: rgba(255, 253, 253, 0.979);
@@ -293,12 +295,10 @@ footer h3 {
   position: relative;
 }
 
-
 .link img {
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
-  
 }
 
 .link .label {
@@ -308,7 +308,6 @@ footer h3 {
   transition: all 0.3s ease;
   font-size: 0.95rem;
   color: #111;
-
 }
 
 /* Quando passa o mouse */
@@ -318,14 +317,11 @@ footer h3 {
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-
 }
 
 .link:hover img {
   transform: scale(1.1);
   transition: transform 0.3s ease;
-  
-
 }
 
 .link:hover .label {
@@ -348,7 +344,6 @@ footer .copy {
   transition: color 0.3s ease;
 }
 
-
 /* RESPONSIVO */
 @media (max-width: 768px) {
   main {
@@ -370,15 +365,10 @@ footer .copy {
     margin-bottom: 24px;
   }
 
-  @media (max-width: 768px) {
   .navbar ul {
     gap: 20px;
     flex-wrap: wrap;
-  }
-}
-  .navbar a {
-    font-size: 0.95rem;
-    padding: 6px 12px;
+    justify-content: center;
   }
 
   .navbar a {
@@ -399,6 +389,7 @@ footer .copy {
     border-radius: 40px;
   }
 }
+
 /* Scroll Reveal estilo Apple flutuando */
 .invisible {
   opacity: 0;
@@ -410,9 +401,4 @@ footer .copy {
 .elevate {
   opacity: 1;
   transform: translateY(0);
-} 
-html {
-  scroll-behavior: smooth;
 }
-
-
